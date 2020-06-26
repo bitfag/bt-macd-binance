@@ -1,0 +1,18 @@
+{
+    "template": "https://github.com/bitfag/cookiecutter-base-py-project",
+    "commit": "8e3c093557b043bec5191205a5cc2885ae2985a4",
+    "context": {
+        "cookiecutter": {
+            "project_name": "bt-macd-binance",
+            "package_name": "btmacd",
+            "version": "0.1.0",
+            "description": "Example MACD backtesting program",
+            "author": "bitfag",
+            "email": "vvk@vvk.pp.ru",
+            "full_name": "Vladimir Kamarzin",
+            "license": "MIT",
+            "line_width": "120",
+            "_template": "https://github.com/bitfag/cookiecutter-base-py-project"
+        }
+    }
+}
