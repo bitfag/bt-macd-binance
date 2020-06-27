@@ -8,7 +8,7 @@ log = logging.getLogger(__name__)
 class MacdStrategy(bt.Strategy):
     def __init__(self):
         self.macd = bt.indicators.MACD(period_me1=12, period_me2=26, period_signal=9)
-        self.signal_over_macd = self.macd.lines.signal > self.macd.lines.macd
+        self.cross = bt.indicators.CrossOver(self.macd.signal, self.macd.macd)
 
     def log(self, txt, dt=None):
         """Adds date of current historical data being processed."""
@@ -17,18 +17,14 @@ class MacdStrategy(bt.Strategy):
 
     def next(self):
 
-        if not self.position:
-            # TODO: refactor to bt.indicators.CrossOver
-            if self.macd.lines.macd[0] > 0:
-                # Signal crosses the MACD line from down to up
-                if self.signal_over_macd[0] and not self.signal_over_macd[-1]:
-                    self.log("BUY CREATE, %.2f" % self.data.close[0])
-                    self.order = self.buy()
-        elif self.macd.lines.macd[0] < 0:
-            # Signal crosses the MACD line from up to down
-            if not self.signal_over_macd[0] and self.signal_over_macd[-1]:
-                self.log("SELL CREATE, %.2f" % self.data.close[0])
-                self.order = self.close()
+        if self.macd.lines.macd[0] > 0 and self.cross[0] > 0 and not self.position:
+            # Signal crosses the MACD upwards
+            self.log("BUY CREATE, %.2f" % self.data.close[0])
+            self.order = self.buy()
+        elif self.macd.lines.macd[0] < 0 and self.cross[0] < 0 and self.position:
+            # Signal crosses the MACD line downwards
+            self.log("SELL CREATE, %.2f" % self.data.close[0])
+            self.order = self.close()
 
     def notify_order(self, order):
         if order.status in [order.Submitted, order.Accepted]:
