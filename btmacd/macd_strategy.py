@@ -41,6 +41,7 @@ class MacdStrategy(bt.Strategy):
 
         elif order.status in [order.Canceled, order.Margin, order.Rejected]:
             self.log("Order Canceled/Margin/Rejected: {}".format(order.status))
+            raise RuntimeError("Order failed to execute")
 
         # Write down: no pending order
         self.order = None
