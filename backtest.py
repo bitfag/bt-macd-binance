@@ -52,7 +52,7 @@ def runstrat(data_file="binance_ohlc.csv", trades_file="mytrades.csv", plot=Fals
 @click.option("--plot", is_flag=True, default=False, help="Plot chart")
 @click.argument("filename")
 def main(plot, filename):
-    """Run backtets on FILENAME, which must be a csv file."""
+    """Run backtest on FILENAME, which must be a csv file."""
     runstrat(data_file=filename, plot=plot)
 
 
