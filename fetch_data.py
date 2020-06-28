@@ -4,7 +4,7 @@ from btmacd.binance_fetcher import BinanceFetcher
 
 
 def main():
-    fetcher = BinanceFetcher("BTCUSDT")
+    fetcher = BinanceFetcher("BTCUSDT", filename="binance_ohlc.csv", start_date="01.01.2018")
     fetcher.fetch()
 
 
