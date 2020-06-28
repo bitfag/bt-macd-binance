@@ -7,7 +7,7 @@ BTC/USD pair.
 
 1. Install [poetry](https://python-poetry.org/docs/)
 2. Run `poetry install` to install the dependencies
-3. Activate the environment using `poettry shell`
+3. Activate the environment using `poetry shell`
 
 ## Running
 
