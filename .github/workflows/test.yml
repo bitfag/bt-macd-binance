@@ -1,5 +1,4 @@
 name: test
-name: test
 
 on: [push, pull_request]
 
@@ -46,4 +45,3 @@ jobs:
       #   uses: codecov/codecov-action@v1
       #   with:
       #     file: ./coverage.xml
-
