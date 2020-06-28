@@ -20,5 +20,7 @@ Obtain historical data feed:
 Run the backtest:
 
 ```
-./backtest.py
+./backtest.py binance_ohlc.csv
 ```
+
+Optionally enable chart plotting: `./backtest.py --plot ...`

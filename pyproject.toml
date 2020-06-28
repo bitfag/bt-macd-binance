@@ -24,6 +24,7 @@ python = "^3.6.1"
 python-binance = "^0.7.5"
 backtrader = "^1.9.75"
 matplotlib = "^3.2.2"
+click = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.2.0"
