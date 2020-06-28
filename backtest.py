@@ -27,7 +27,7 @@ def runstrat(data_file="binance_ohlc.csv", trades_file="mytrades.csv", plot=Fals
 
     # Use full portfolio on each trade
     cerebro.addsizer(CustomAllInSizer)
-    cerebro.addanalyzer(bt.analyzers.SharpeRatio)
+    cerebro.addanalyzer(bt.analyzers.SharpeRatio, riskfreerate=0.02)
     cerebro.addanalyzer(ResultAnalyzer)
     cerebro.addanalyzer(TradesWriter, filename=trades_file)
 
